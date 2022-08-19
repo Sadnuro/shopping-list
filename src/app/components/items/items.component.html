@@ -1,0 +1,11 @@
+<div>
+  <app-total mensaje="Total por pagar: " [total]="total"></app-total>
+  <!-- Child's EventEmmiter | Father's service method -->
+    <app-item 
+        *ngFor="let item of items" 
+        [item]="item"
+        (deleteItem)="deleteItem($event)" 
+        (toggleItem)="toggleItem($event)"> 
+        {{item.title}}
+    </app-item>
+</div>
