@@ -15,15 +15,21 @@ export class ItemsComponent implements OnInit {
   constructor(private itemService: ItemService) { }
 
   ngOnInit(): void {
-    this.items = this.itemService.getItems();
-
-    this.getTotal();
+    this.itemService.getItems().subscribe(data => {
+      this.items = data
+      this.getTotal();
+    });
   }
 
   deleteItem(item: Item) {
     // Exclude the item with id sent to be deleted
-    this.items = this.items.filter(x => x.id !== item.id);
-    this.getTotal();
+    // this.items = this.items.filter(x => x.id !== item.id);
+    this.itemService.deleteItem(item).subscribe(x => {
+      this.itemService.getItems().subscribe(data => {
+        this.items = data
+        this.getTotal();
+      });
+    });
   }
   getTotal(){
     this.total = this.items
@@ -33,7 +39,9 @@ export class ItemsComponent implements OnInit {
   }
 
   toggleItem(item: Item) {
-    this.getTotal();
+    this.itemService.toggleItem(item).subscribe( x => {
+      this.getTotal();
+    });
   }
 
 }
