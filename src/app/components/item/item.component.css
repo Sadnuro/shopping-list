@@ -5,6 +5,13 @@ div {
     display: flex;
     box-sizing: border-box;
 }
+.row:hover {
+  border-radius: 3px;
+  background: #eee;
+}
+div {
+  padding: 5px 0;
+}
 .completed {
     text-decoration: line-through;
     color: #ccc;
@@ -37,4 +44,15 @@ div {
     text-align: center;
     box-sizing: border-box;
     padding: 0 5px;
+}
+
+.actions #delete-btn {
+  border: 0px;
+  border-radius: 3px;
+  background-color: red;
+  color: white;
+}
+
+.actions #delete-btn:hover {
+  background-color:rgb(164, 5, 37);
 }
